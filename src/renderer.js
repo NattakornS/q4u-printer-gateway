@@ -89,7 +89,8 @@ function init() {
 }
 
 function printTest() {
-  const device = new escpos.Network(txtPrinterIp.value);
+  const device = new escpos.USB();
+  // const device = new escpos.Network(txtPrinterIp.value);
 
   const printer = new escpos.Printer(device);
 
@@ -283,7 +284,8 @@ async function printQueue(queue) {
   try {
 
     const printerIp = localStorage.getItem('printerIp');
-    const device = new escpos.Network(printerIp);
+    // const device = new escpos.Network(printerIp);
+    const device = new escpos.USB();
     const printer = new escpos.Printer(device);
 
     if (queue) {
