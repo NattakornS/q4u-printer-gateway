@@ -11,7 +11,7 @@ after finished look at **out/** folder
 on linux (raspberypi)
 ```sudo ./printer-gateway```
 on window สามารถ download ตัวที่ build แล้วได้
-https://github.com/mophos/q4u-printer-gateway/releases/tag/1.01
+https://github.com/NattakornS/q4u-printer-gateway/releases/tag/v1.0.2
 
 **Note** ในRaspbery Pi หาก print ไม่ได้ให้ใช้ sudo
 this version change to use usb escpos
