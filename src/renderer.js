@@ -89,8 +89,10 @@ function init() {
 }
 
 function printTest() {
-  const device = new escpos.USB();
-  // const device = new escpos.Network(txtPrinterIp.value);
+  var device = new escpos.Network(txtPrinterIp.value);
+  if (txtPrinterIp.value === 'USB') {
+    device = new escpos.USB();
+  }
 
   const printer = new escpos.Printer(device);
 
@@ -284,8 +286,10 @@ async function printQueue(queue) {
   try {
 
     const printerIp = localStorage.getItem('printerIp');
-    // const device = new escpos.Network(printerIp);
-    const device = new escpos.USB();
+    var device = new escpos.Network(printerIp);
+    if (printerIp === 'USB') {
+      device = new escpos.USB();
+    }
     const printer = new escpos.Printer(device);
 
     if (queue) {
@@ -329,9 +333,9 @@ async function printQueue(queue) {
             .text(firstName + ' ' + lastName)
             .text('')
             .cut()
-        }
-
-        printer
+            .close()
+        } else {
+          printer
           .size(2, 1)
           .text(hosname)
           .text(servicePointName)
@@ -362,6 +366,9 @@ async function printQueue(queue) {
             this.cut()
             this.close();
           })
+        }
+
+        
 
       });
 
